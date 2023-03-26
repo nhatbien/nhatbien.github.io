@@ -4,14 +4,24 @@
     "title": "API Title",
     "version": "1.0"
   },
-  "host": "localhost:3001",
+  "host": "207.148.89.111:3001",
   "basePath": "/api/v1",
   "schemes": ["https", "http"],
-
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "securityDefinitions": {
+    "bearerAuth": {
+      "type": "apiKey",
+      "in": "header",
+      "name": "Authorization",
+      "description": "JWT Authorization header"
+    }
+  },
+  "security": [{ "bearerAuth": [] }],
   "paths": {
     "/user/signup": {
       "post": {
-        "summary": "Logout",
+        "summary": "Register",
         "tags": ["Auth"],
         "description": "",
         "operationId": "signup",
@@ -78,6 +88,13 @@
         "produces": ["application/json"],
         "parameters": [
           {
+            "name": "Authorization",
+            "in": "header",
+            "description": "JWT access token",
+            "required": true,
+            "type": "string"
+          },
+          {
             "in": "body",
             "name": "body",
             "description": "update profile",
@@ -109,6 +126,13 @@
         "produces": ["application/json"],
         "parameters": [
           {
+            "name": "Authorization",
+            "in": "header",
+            "description": "JWT access token",
+            "required": true,
+            "type": "string"
+          },
+          {
             "in": "body",
             "name": "body",
             "description": "create Category Book",
@@ -138,15 +162,21 @@
         "operationId": "updateCategoryBook",
         "consumes": ["application/json"],
         "produces": ["application/json"],
-        
+
         "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "JWT access token",
+            "required": true,
+            "type": "string"
+          },
           {
             "in": "path",
             "name": "id",
             "description": "id",
             "required": true,
             "type": "string"
-            
           },
 
           {
