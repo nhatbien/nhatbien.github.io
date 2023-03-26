@@ -80,7 +80,7 @@
           {
             "in": "body",
             "name": "body",
-            "description": "Signup",
+            "description": "update profile",
             "required": true,
             "schema": {
               "$ref": "#/definitions/Signup"
@@ -111,7 +111,7 @@
           {
             "in": "body",
             "name": "body",
-            "description": "Signup",
+            "description": "create Category Book",
             "required": true,
             "schema": {
               "$ref": "#/definitions/RequestSaveCategoryBook"
@@ -128,7 +128,7 @@
         }
       }
     },
-    "/user/category-book/update": {
+    "/user/category-book/{id}/update": {
       "post": {
         "summary": "Update Category Book",
 
@@ -138,17 +138,46 @@
         "operationId": "updateCategoryBook",
         "consumes": ["application/json"],
         "produces": ["application/json"],
+        
         "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "id",
+            "required": true,
+            "type": "string"
+            
+          },
+
           {
             "in": "body",
             "name": "body",
-            "description": "Signup",
+            "description": "update Category Book",
             "required": true,
             "schema": {
               "$ref": "#/definitions/RequestSaveCategoryBook"
             }
           }
         ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ResponseDefault"
+            }
+          }
+        }
+      }
+    },
+    "/category-book/all": {
+      "get": {
+        "summary": "Get all Category Book",
+        "tags": ["Category Book"],
+        "description": "GetAllCategoryBook",
+        "operationId": "GetAllCategoryBook",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [],
         "responses": {
           "200": {
             "description": "OK",
