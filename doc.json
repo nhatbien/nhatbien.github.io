@@ -199,7 +199,7 @@
         }
       }
     },
-    "/category-book/all": {
+    "/user/category-book/all": {
       "get": {
         "summary": "Get all Category Book",
         "tags": ["Category Book"],
